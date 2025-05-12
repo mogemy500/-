@@ -4,66 +4,66 @@ data = {
     "mo": {"email": "mo@gmail.com", "password": "1234567"}
 }
 
-# »œ«Ì…  ”ÃÌ· «·œŒÊ·
+# √à√è√á√≠√â √ä√ì√å√≠√° √á√°√è√é√¶√°
 print("Hello in our app!")
 ourapp = input("Login, sign up, or delete your account\n")
 
-# «· Õﬁﬁ „‰ «·«Œ Ì«— «·’ÕÌÕ „‰ login, sign, or delete
+# √á√°√ä√ç√û√û √£√§ √á√°√á√é√ä√≠√á√ë √á√°√ï√ç√≠√ç √£√§ login, sign, or delete
 while ourapp not in ["login", "sign", "s", "l", "d"]:
     print("I can't understand you.")
     ourapp = input("Please choose login, sign up, or delete your account\n")
 
-# ≈–« ﬂ«‰  ”ÃÌ· ÃœÌœ (sign up)
+# √Ö√ê√á √ü√á√§ √ä√ì√å√≠√° √å√è√≠√è (sign up)
 if ourapp == "sign" or ourapp == "s":
     name = input("Please enter your name\n")
     email = input("Please enter your email\n")
 
-    # «· Õﬁﬁ „‰ √‰ «·«Ì„Ì· Ì‰ ÂÌ »‹ @gmail.com
+    # √á√°√ä√ç√û√û √£√§ √É√§ √á√°√á√≠√£√≠√° √≠√§√ä√•√≠ √à√ú @gmail.com
     while not email.endswith("@gmail.com"):
         print("Wrong, should write '@gmail.com'")
         email = input("Please enter your email\n")
 
     password = input("Please enter your password\n")
 
-    # «· Õﬁﬁ „‰ √‰ «·»«”Ê—œ Ì ﬂÊ‰ „‰ √ﬂÀ— „‰ 5 √Õ—›
+    # √á√°√ä√ç√û√û √£√§ √É√§ √á√°√à√á√ì√¶√ë√è √≠√ä√ü√¶√§ √£√§ √É√ü√ã√ë √£√§ 5 √É√ç√ë√ù
     while len(password) <= 5:
         print("Your password should contain more than 5 characters")
         password = input("Please enter your password\n")
 
-    #  ÕœÌÀ «·»Ì«‰«  ›Ì «·ﬁ«„Ê” Ê ”ÃÌ·Â«
+    # √ä√ç√è√≠√ã √á√°√à√≠√á√§√á√ä √ù√≠ √á√°√û√á√£√¶√ì √¶√ä√ì√å√≠√°√•√á
     data.update({name: {"email": email, "password": password}})
     print(data)
 
-# ≈–« ﬂ«‰  ”ÃÌ· œŒÊ· (login)
+# √Ö√ê√á √ü√á√§ √ä√ì√å√≠√° √è√é√¶√° (login)
 elif ourapp == "login" or ourapp == "l":
     email_input = input("Type your email: ")
     password_input = input("Type your password: ")
 
-    # «› —«÷ √‰ «·ﬁ«„Ê” ·« ÌÕ ÊÌ ⁄·Ï «·»Ì«‰« 
+    # √á√ù√ä√ë√á√ñ √É√§ √á√°√û√á√£√¶√ì √°√á √≠√ç√ä√¶√≠ √ö√°√¨ √á√°√à√≠√á√§√á√ä
     found = False
     while not found:
-        # «· √ﬂœ „‰ √‰ «·«Ì„Ì· Ê«·»«”Ê—œ ’ÕÌÕ«‰
+        # √á√°√ä√É√ü√è √£√§ √É√§ √á√°√á√≠√£√≠√° √¶√á√°√à√á√ì√¶√ë√è √ï√ç√≠√ç√á√§
         for name, info in data.items():
             if info["email"] == email_input and info["password"] == password_input:
                 print(f"Welcome in our app, {name}")
                 found = True
                 break
 
-        # ≈–« ﬂ«‰  «·»Ì«‰«  €Ì— ’ÕÌÕ…°  ı⁄«œ «·√”∆·…
+        # √Ö√ê√á √ü√á√§√ä √á√°√à√≠√á√§√á√ä √õ√≠√ë √ï√ç√≠√ç√â¬° √ä√µ√ö√á√è √á√°√É√ì√Ü√°√â
         if not found:
             print("Your email or password is wrong.")
             email_input = input("Type your email: ")
             password_input = input("Type your password: ")
 
-# ≈–« ﬂ«‰ Õ–› «·Õ”«» (delete)
+# √Ö√ê√á √ü√á√§ √ç√ê√ù √á√°√ç√ì√á√à (delete)
 else:
     email_output = input("Type your email: ")
     password_output = input("Type your password: ")
 
-    # «› —«÷ √‰ «·ﬁ«„Ê” ·« ÌÕ ÊÌ ⁄·Ï «·»Ì«‰« 
+    # √á√ù√ä√ë√á√ñ √É√§ √á√°√û√á√£√¶√ì √°√á √≠√ç√ä√¶√≠ √ö√°√¨ √á√°√à√≠√á√§√á√ä
     found = False
     while not found:
-        # «· √ﬂœ „‰ √‰ «·«Ì„Ì· Ê«·»«”Ê—œ ’ÕÌÕ«‰
+        # √á√°√ä√É√ü√è √£√§ √É√§ √á√°√á√≠√£√≠√° √¶√á√°√à√á√ì√¶√ë√è √ï√ç√≠√ç√á√§
         for name, info in data.items():
             if info["email"] == email_output and info["password"] == password_output:
                 print(f"Welcome in our app, {name}")
@@ -72,7 +72,7 @@ else:
                 found = True
                 break
 
-        # ≈–« ﬂ«‰  «·»Ì«‰«  €Ì— ’ÕÌÕ…°  ı⁄«œ «·√”∆·…
+        # √Ö√ê√á √ü√á√§√ä √á√°√à√≠√á√§√á√ä √õ√≠√ë √ï√ç√≠√ç√â¬° √ä√µ√ö√á√è √á√°√É√ì√Ü√°√â
         if not found:
             print("Your email or password is wrong.")
             email_output = input("Type your email: ")
@@ -146,10 +146,10 @@ while True:
 
         a = input("Do you need more actions? (yes/no):\n ")
         if a.lower() == "yes":
-            continue  # «·⁄Êœ… ≈·Ï «·”ƒ«· „—… √Œ—Ï
+            continue  # √á√°√ö√¶√è√â √Ö√°√¨ √á√°√ì√Ñ√á√° √£√ë√â √É√é√ë√¨
         else:
             print("Thank you!")
-            break  # «·Œ—ÊÃ „‰ «·»—‰«„Ã
+            break  # √á√°√é√ë√¶√å √£√§ √á√°√à√ë√§√á√£√å
 
     elif list_choise.lower() in ("w"):
         show_last_data = list(do_to_list.items())[-1]
@@ -157,10 +157,10 @@ while True:
 
         a = input("Do you need more actions? (yes/no):\n ")
         if a.lower() == "yes":
-            continue  # «·⁄Êœ… ≈·Ï «·”ƒ«· „—… √Œ—Ï
+            continue  # √á√°√ö√¶√è√â √Ö√°√¨ √á√°√ì√Ñ√á√° √£√ë√â √É√é√ë√¨
         else:
             print("Thank you!")
-            break  # «·Œ—ÊÃ „‰ «·»—‰«„Ã
+            break  # √á√°√é√ë√¶√å √£√§ √á√°√à√ë√§√á√£√å
 
     elif list_choise.lower() in ("u"):
         while True:
@@ -180,9 +180,9 @@ while True:
                 print("your task name not found in our app")
                 a = input("Do you need more actions? (yes/no):\n ")
                 if a.lower() == "yes":
-                    continue  # «·⁄Êœ… ≈·Ï «·”ƒ«· „—… √Œ—Ï
+                    continue  # √á√°√ö√¶√è√â √Ö√°√¨ √á√°√ì√Ñ√á√° √£√ë√â √É√é√ë√¨
 
-                break  # «·Œ—ÊÃ „‰ «·»—‰«„Ã
+                break  # √á√°√é√ë√¶√å √£√§ √á√°√à√ë√§√á√£√å
 
     elif list_choise.lower() in ("d"):
         while True:
@@ -192,19 +192,19 @@ while True:
                 print(do_to_list)
                 a = input("Do you need more actions? (yes/no):\n ")
                 if a.lower() == "yes":
-                    continue  # «·⁄Êœ… ≈·Ï «·”ƒ«· „—… √Œ—Ï
+                    continue  # √á√°√ö√¶√è√â √Ö√°√¨ √á√°√ì√Ñ√á√° √£√ë√â √É√é√ë√¨
                 else:
                     print("Thank you!")
-                    break  # «·Œ—ÊÃ „‰ «·»—‰«„Ã
+                    break  # √á√°√é√ë√¶√å √£√§ √á√°√à√ë√§√á√£√å
             else:
                 print("your task name not found in our app")
                 a = input("Do you need more actions? (yes/no):\n ")
                 if a.lower() == "yes":
-                    continue  # «·⁄Êœ… ≈·Ï «·”ƒ«· „—… √Œ—Ï
+                    continue  # √á√°√ö√¶√è√â √Ö√°√¨ √á√°√ì√Ñ√á√° √£√ë√â √É√é√ë√¨
                 else:
                     print("Thank you!")
-                    break  # «·Œ—ÊÃ „‰ «·»—‰«„Ã
+                    break  # √á√°√é√ë√¶√å √£√§ √á√°√à√ë√§√á√£√å
 
     elif list_choise in ("o"):
         print("Thanks for using the app. Goodbye!")
-        break  # ÌŒ—Ã „‰ «·»—‰«„Ã
+        break  # √≠√é√ë√å √£√§ √á√°√à√ë√§√á√£√å
