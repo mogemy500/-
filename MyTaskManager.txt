@@ -1,0 +1,210 @@
+from datetime import datetime
+
+data = {
+    "mo": {"email": "mo@gmail.com", "password": "1234567"}
+}
+
+# »œ«Ì…  ”ÃÌ· «·œŒÊ·
+print("Hello in our app!")
+ourapp = input("Login, sign up, or delete your account\n")
+
+# «· Õﬁﬁ „‰ «·«Œ Ì«— «·’ÕÌÕ „‰ login, sign, or delete
+while ourapp not in ["login", "sign", "s", "l", "d"]:
+    print("I can't understand you.")
+    ourapp = input("Please choose login, sign up, or delete your account\n")
+
+# ≈–« ﬂ«‰  ”ÃÌ· ÃœÌœ (sign up)
+if ourapp == "sign" or ourapp == "s":
+    name = input("Please enter your name\n")
+    email = input("Please enter your email\n")
+
+    # «· Õﬁﬁ „‰ √‰ «·«Ì„Ì· Ì‰ ÂÌ »‹ @gmail.com
+    while not email.endswith("@gmail.com"):
+        print("Wrong, should write '@gmail.com'")
+        email = input("Please enter your email\n")
+
+    password = input("Please enter your password\n")
+
+    # «· Õﬁﬁ „‰ √‰ «·»«”Ê—œ Ì ﬂÊ‰ „‰ √ﬂÀ— „‰ 5 √Õ—›
+    while len(password) <= 5:
+        print("Your password should contain more than 5 characters")
+        password = input("Please enter your password\n")
+
+    #  ÕœÌÀ «·»Ì«‰«  ›Ì «·ﬁ«„Ê” Ê ”ÃÌ·Â«
+    data.update({name: {"email": email, "password": password}})
+    print(data)
+
+# ≈–« ﬂ«‰  ”ÃÌ· œŒÊ· (login)
+elif ourapp == "login" or ourapp == "l":
+    email_input = input("Type your email: ")
+    password_input = input("Type your password: ")
+
+    # «› —«÷ √‰ «·ﬁ«„Ê” ·« ÌÕ ÊÌ ⁄·Ï «·»Ì«‰« 
+    found = False
+    while not found:
+        # «· √ﬂœ „‰ √‰ «·«Ì„Ì· Ê«·»«”Ê—œ ’ÕÌÕ«‰
+        for name, info in data.items():
+            if info["email"] == email_input and info["password"] == password_input:
+                print(f"Welcome in our app, {name}")
+                found = True
+                break
+
+        # ≈–« ﬂ«‰  «·»Ì«‰«  €Ì— ’ÕÌÕ…°  ı⁄«œ «·√”∆·…
+        if not found:
+            print("Your email or password is wrong.")
+            email_input = input("Type your email: ")
+            password_input = input("Type your password: ")
+
+# ≈–« ﬂ«‰ Õ–› «·Õ”«» (delete)
+else:
+    email_output = input("Type your email: ")
+    password_output = input("Type your password: ")
+
+    # «› —«÷ √‰ «·ﬁ«„Ê” ·« ÌÕ ÊÌ ⁄·Ï «·»Ì«‰« 
+    found = False
+    while not found:
+        # «· √ﬂœ „‰ √‰ «·«Ì„Ì· Ê«·»«”Ê—œ ’ÕÌÕ«‰
+        for name, info in data.items():
+            if info["email"] == email_output and info["password"] == password_output:
+                print(f"Welcome in our app, {name}")
+                del data[name]
+                print("Your account has been deleted successfully.")
+                found = True
+                break
+
+        # ≈–« ﬂ«‰  «·»Ì«‰«  €Ì— ’ÕÌÕ…°  ı⁄«œ «·√”∆·…
+        if not found:
+            print("Your email or password is wrong.")
+            email_output = input("Type your email: ")
+            password_output = input("Type your password: ")
+
+do_to_list = {
+    "report": {
+        "day_of_task": 3,
+        "task_number": 101,
+        "start_cours": "2025-05-11 10:30:00",
+    },
+    "calculate": {
+        "day_of_task": 5,
+        "task_number": 102,
+        "start_cours": "2025-05-11 11:00:00",
+    }
+}
+
+print("Welcome to our app! We will give you some choices.")
+
+while True:
+    print("""
+    if you want 'add task'==>'a'
+    if you want 'update'==>'u'
+    if you want 'delete'==>'d'
+    if you want 'show last data'==>'w'
+    if you want ' out'==>'o'
+    """)
+    list_choise = input("add task, update, delete, show last data, out from our app\n\n")
+
+    if list_choise.strip().lower() in ("a"):
+        while True:
+            task_name = input("Put your task\n")
+            if task_name.strip() == "":
+                print("Please enter a valid task name (not empty).")
+            elif task_name.strip().isnumeric():
+                print("Please enter a task name, not a number.")
+            else:
+                break
+
+        while True:
+            try:
+                day_of_task = int(input("How many days to finish the task?\n"))
+                if day_of_task <= 0:
+                    print("Please enter a valid number of days greater than 0.")
+                    continue
+                break
+            except ValueError:
+                print("Please enter a valid number for the days.")
+
+        while True:
+            try:
+                task_number = int(input("Put your task number\n"))
+                if task_number <= 0:
+                    print("Please enter a valid task number greater than 0.")
+                    continue
+                break
+            except ValueError:
+                print("Please enter a valid task number.")
+
+        start_cours = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        do_to_list[task_name] = {
+            "day_of_task": day_of_task,
+            "task_number": task_number,
+            "start_cours": start_cours,
+        }
+
+        print("Task added successfully!")
+        print(do_to_list)
+
+        a = input("Do you need more actions? (yes/no):\n ")
+        if a.lower() == "yes":
+            continue  # «·⁄Êœ… ≈·Ï «·”ƒ«· „—… √Œ—Ï
+        else:
+            print("Thank you!")
+            break  # «·Œ—ÊÃ „‰ «·»—‰«„Ã
+
+    elif list_choise.lower() in ("w"):
+        show_last_data = list(do_to_list.items())[-1]
+        print(show_last_data)
+
+        a = input("Do you need more actions? (yes/no):\n ")
+        if a.lower() == "yes":
+            continue  # «·⁄Êœ… ≈·Ï «·”ƒ«· „—… √Œ—Ï
+        else:
+            print("Thank you!")
+            break  # «·Œ—ÊÃ „‰ «·»—‰«„Ã
+
+    elif list_choise.lower() in ("u"):
+        while True:
+            last_name = input("please input last name")
+            if last_name in do_to_list:
+                data = do_to_list[last_name]
+                new = input("please enter new name")
+                task_day1 = input("please enter new days ")
+                task_num1 = input("please enter new numbers ")
+                start_cours1 = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                do_to_list[new] = do_to_list.pop(last_name)
+                data["task_day"] = task_day1
+                data["task_num"] = task_num1
+                data["start_cours"] = start_cours1
+                print(do_to_list)
+            else:
+                print("your task name not found in our app")
+                a = input("Do you need more actions? (yes/no):\n ")
+                if a.lower() == "yes":
+                    continue  # «·⁄Êœ… ≈·Ï «·”ƒ«· „—… √Œ—Ï
+
+                break  # «·Œ—ÊÃ „‰ «·»—‰«„Ã
+
+    elif list_choise.lower() in ("d"):
+        while True:
+            delete_task = input("please type task you want deleted")
+            if delete_task in do_to_list:
+                do_to_list.pop(delete_task)
+                print(do_to_list)
+                a = input("Do you need more actions? (yes/no):\n ")
+                if a.lower() == "yes":
+                    continue  # «·⁄Êœ… ≈·Ï «·”ƒ«· „—… √Œ—Ï
+                else:
+                    print("Thank you!")
+                    break  # «·Œ—ÊÃ „‰ «·»—‰«„Ã
+            else:
+                print("your task name not found in our app")
+                a = input("Do you need more actions? (yes/no):\n ")
+                if a.lower() == "yes":
+                    continue  # «·⁄Êœ… ≈·Ï «·”ƒ«· „—… √Œ—Ï
+                else:
+                    print("Thank you!")
+                    break  # «·Œ—ÊÃ „‰ «·»—‰«„Ã
+
+    elif list_choise in ("o"):
+        print("Thanks for using the app. Goodbye!")
+        break  # ÌŒ—Ã „‰ «·»—‰«„Ã
